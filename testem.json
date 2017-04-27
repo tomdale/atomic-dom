@@ -1,0 +1,34 @@
+{
+  "framework": "qunit",
+  "test_page": "test/index.html",
+
+  "before_tests": "yarn run build:test",
+  "on_exit": "rm -rf dist-test",
+
+  "serve_files": [
+    "dist-test/**/*.js"
+  ],
+  "src_files": [
+    "src/**/*.ts",
+    "test/**/*.ts"
+  ],
+
+  "launchers": {
+    "Node": {
+      "command": "qunit dist-test/commonjs/test/test.js",
+      "protocol": "tap"
+    }
+  },
+
+  "launch_in_dev": [
+    "Chrome",
+    "Node"
+  ],
+
+  "launch_in_ci": [
+    "Safari",
+    "Chrome",
+    "Node",
+    "Firefox"
+  ]
+}

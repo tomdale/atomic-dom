@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "es6",
+    "outDir": "dist/modules",
+    "strict": true,
+    "noUnusedLocals": true,
+    "declaration": true
+  },
+  "include": [
+    "src",
+    "test"
+  ]
+}

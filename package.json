@@ -1,0 +1,42 @@
+{
+  "name": "atomic-dom",
+  "version": "0.1.0",
+  "description": "Generate and stream HTML from Node, or create DOM from Web Workers, with a unified API.",
+  "main": "dist/commonjs/index.js",
+  "types": "dist/commonjs/index.d.ts",
+  "module": "dist/modules/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "testem ci",
+    "test:browser": "yarn run build:test:browser && open test/index.html",
+    "test:node": "yarn run build:test:node && qunit dist-test/commonjs/test/test.js",
+    "build": "yarn run build:node && yarn run build:browser",
+    "build:node": "tsc -p tsconfig.build.json --module commonjs --outDir dist/commonjs",
+    "build:browser": "tsc -p tsconfig.build.json --module es6 --outDir dist/modules",
+    "build:test": "yarn run build:test:node && yarn run build:test:browser",
+    "build:test:node": "tsc --module commonjs --outDir dist-test/commonjs/",
+    "build:test:browser": "tsc --module amd --outFile dist-test/amd.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomdale/atomic-dom.git"
+  },
+  "keywords": [
+    "dom"
+  ],
+  "author": "Tom Dale <tom@tomdale.net>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tomdale/atomic-dom/issues"
+  },
+  "homepage": "https://github.com/tomdale/atomic-dom#readme",
+  "devDependencies": {
+    "@types/qunit": "^2.0.31",
+    "loader.js": "^4.3.0",
+    "qunitjs": "^2.3.2",
+    "testem": "^1.16.0",
+    "typescript": "rc"
+  }
+}
